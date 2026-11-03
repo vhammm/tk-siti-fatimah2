@@ -15,3 +15,40 @@
 .teacher-card div{padding:15px 16px}.teacher-card b{display:block;font:700 .95rem Poppins;color:var(--green)}.teacher-card span{color:#789077;font-size:.73rem;font-weight:700}
 @keyframes teacher-marquee{to{transform:translateX(-50%)}}
 @media(max-width:575px){.brand-logo{width:42px;height:42px}.teacher-section{padding:75px 0 55px}.teacher-card{width:175px}.teacher-card img{height:195px}.teacher-set{gap:14px;padding-right:14px}.teacher-track{animation-duration:25s}}
+
+/* Carousel guru tanpa kartu duplikat */
+.teacher-slider{max-width:1160px;margin:42px auto 0;mask-image:none}
+.teacher-track{gap:20px;width:max-content;animation:none;will-change:transform}
+.teacher-set{display:contents}
+.contact-phone{display:inline-flex;align-items:center;gap:9px;margin-top:4px;border-radius:50px;padding:11px 16px;background:var(--green);color:#fff;text-decoration:none;font-weight:800;font-size:.9rem;transition:.25s}.contact-phone:hover{background:#234b34;color:#fff;transform:translateY(-2px)}
+.social-placeholder a{display:grid;place-items:center;width:32px;height:32px;margin:0;border:1px solid #ffffff3b;border-radius:50%;color:#dce9da;transition:.2s}.social-placeholder a:hover{background:var(--yellow);border-color:var(--yellow);color:var(--green);transform:translateY(-2px)}
+@media(max-width:575px){.teacher-slider{max-width:100%;margin-top:32px}.teacher-track{gap:14px}}
+
+/* Galeri konsisten pada semua ukuran foto dan panel carousel tanpa sisa warna */
+.gallery-grid{grid-template-columns:repeat(auto-fit,minmax(210px,1fr));grid-auto-rows:220px;grid-auto-flow:dense}
+.gallery-item:nth-child(n){grid-column:auto;grid-row:auto}.gallery-item img{object-fit:cover;object-position:center}
+#galleryCarousel,.carousel-inner,#galleryCarousel .carousel-item{background:#fff2ec}
+#galleryCarousel .carousel-item{min-height:128px}.carousel-caption-card{min-height:128px;display:flex;align-items:center;justify-content:center}
+@media(max-width:575px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:160px}.gallery-item:nth-child(n){grid-column:auto;grid-row:auto}}
+
+/* Empat guru tampak sekaligus di desktop; kartu kelima masuk bergantian dari kanan. */
+.teacher-slider{max-width:880px}
+
+/* Foto galeri mempertahankan ukuran kartu yang sama pada setiap kategori. */
+.gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr));justify-content:initial}
+.gallery-grid.gallery-count-1,.gallery-grid.gallery-count-2,.gallery-grid.gallery-count-3{display:flex;justify-content:center;gap:15px}
+.gallery-grid.gallery-count-1 .gallery-item,.gallery-grid.gallery-count-2 .gallery-item,.gallery-grid.gallery-count-3 .gallery-item{width:calc((100% - 45px)/4);height:220px;flex:none}
+.gallery-grid.gallery-remainder-2 .gallery-item:nth-last-child(2){grid-column:2}.gallery-grid.gallery-remainder-1 .gallery-item:last-child{grid-column:2}
+@media(max-width:575px){.teacher-slider{max-width:100%}.gallery-grid.gallery-count-1 .gallery-item,.gallery-grid.gallery-count-2 .gallery-item,.gallery-grid.gallery-count-3 .gallery-item{width:calc((100% - 14px)/2);height:160px}.gallery-grid.gallery-remainder-2 .gallery-item:nth-last-child(2),.gallery-grid.gallery-remainder-1 .gallery-item:last-child{grid-column:auto}}
+
+/* Rotasi guru menampilkan empat kartu utuh tanpa potongan di kedua sisi. */
+.teacher-slider{overflow:hidden;cursor:pointer}.teacher-track{transform:translateX(0);transition:transform .7s cubic-bezier(.22,.61,.36,1)}
+.month-timeline{justify-content:center}
+@media(max-width:767px){.month-timeline{justify-content:flex-start}}
+
+/* Dua panel narasi galeri: hijau dan pink, berganti otomatis melalui Bootstrap carousel. */
+#galleryCarousel,.carousel-inner,#galleryCarousel .carousel-item{background:transparent}.carousel-caption-card.green-bg{background:#e4f1dd;color:var(--green)}.carousel-caption-card.peach-bg{background:#fff0eb;color:#8b5a4c}
+
+/* Entrance animation saat halaman pertama kali dibuka. */
+#mainNav{animation:nav-enter .65s cubic-bezier(.22,.61,.36,1) both}@keyframes nav-enter{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){#mainNav{animation:none}.reveal{opacity:1;transform:none;transition:none}}
