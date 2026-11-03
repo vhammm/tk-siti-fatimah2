@@ -52,3 +52,13 @@
 /* Entrance animation saat halaman pertama kali dibuka. */
 #mainNav{animation:nav-enter .65s cubic-bezier(.22,.61,.36,1) both}@keyframes nav-enter{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){#mainNav{animation:none}.reveal{opacity:1;transform:none;transition:none}}
+
+/* Loop halus tim guru; berhenti hanya selama kursor berada pada carousel. */
+.teacher-slider{cursor:default}.teacher-track{transition:none;animation:teacher-marquee-loop 32s linear infinite}.teacher-slider:hover .teacher-track,.teacher-slider:focus-within .teacher-track{animation-play-state:paused}
+@keyframes teacher-marquee-loop{to{transform:translateX(calc(-1 * var(--teacher-loop-distance)))}}
+
+/* Memudarkan kartu saat menyentuh sisi kiri dan kanan carousel. */
+.teacher-slider{mask-image:linear-gradient(to right,transparent 0%,#000 12%,#000 88%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 12%,#000 88%,transparent 100%)}
+
+/* Carousel membentang dari sisi kiri hingga sisi kanan halaman. */
+.teacher-slider{width:100vw;max-width:none;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);mask-image:linear-gradient(to right,transparent 0%,#000 3%,#000 97%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 3%,#000 97%,transparent 100%)}
